@@ -17,7 +17,7 @@ RUN cd /home && git clone -b "azureml-sdk-1.0.10" --single-branch https://github
 
 # generate jupyter configuration file
 RUN ["/bin/bash", "-c", "source activate azureml && mkdir ~/.jupyter && cd ~/.jupyter && jupyter notebook --generate-config"]
-
+RUN conda create -n azureml -y -q Python=3.6
 # set an emtpy token for Jupyter to remove authentication. 
 # this is NOT recommended for production environment
 RUN echo "c.NotebookApp.token = ''" >> ~/.jupyter/jupyter_notebook_config.py
